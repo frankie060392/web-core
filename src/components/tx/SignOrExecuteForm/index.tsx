@@ -73,8 +73,9 @@ const SignOrExecuteForm = ({
   const [shouldExecute, setShouldExecute] = useState<boolean>(true)
   const [isSubmittable, setIsSubmittable] = useState<boolean>(true)
   const [tx, setTx] = useState<SafeTransaction | undefined>(safeTx)
+  console.log('🚀 ~ file: index.tsx:76 ~ safeTx:', safeTx)
   const [submitError, setSubmitError] = useState<Error | undefined>()
-
+  console.log('transaction detail', tx)
   // Check that the transaction is executable
   const isNewExecutableTx = !txId && safe.threshold === 1 && !hasPending
   const isCorrectNonce = tx?.data.nonce === safe.nonce
@@ -181,6 +182,7 @@ const SignOrExecuteForm = ({
 
   // On advanced params submit (nonce, gas limit, price, etc)
   const onAdvancedSubmit = async (data: AdvancedParameters) => {
+    console.log('🚀 ~ file: index.tsx:184 ~ onAdvancedSubmit ~ data:', data)
     // If nonce was edited, create a new tx with that nonce
     if (tx && (data.nonce !== tx.data.nonce || data.safeTxGas !== tx.data.safeTxGas)) {
       try {
@@ -204,8 +206,13 @@ const SignOrExecuteForm = ({
     cannotPropose ||
     isExecutionLoop ||
     isValidExecutionLoading
-
-  const error = props.error || (willExecute ? gasLimitError || executionValidationError : undefined)
+  console.log('🚀 ~ file: index.tsx:210 ~ submitDisabled:', submitDisabled)
+  const error = willExecute ? gasLimitError || executionValidationError : undefined
+  console.log('🚀 ~ file: index.tsx:210 ~ tx:', tx)
+  console.log('🚀 ~ file: index.tsx:211 ~ disableSubmit:', disableSubmit)
+  console.log('🚀 ~ file: index.tsx:212 ~ cannotPropose:', cannotPropose)
+  console.log('🚀 ~ file: index.tsx:213 ~ isExecutionLoop:', isExecutionLoop)
+  console.log('🚀 ~ file: index.tsx:214 ~ isValidExecutionLoading:', isValidExecutionLoading)
 
   return (
     <form onSubmit={handleSubmit}>

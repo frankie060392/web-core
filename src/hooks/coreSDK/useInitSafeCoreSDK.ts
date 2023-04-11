@@ -24,7 +24,6 @@ export const useInitSafeCoreSDK = () => {
       setSafeSDK(undefined)
       return
     }
-
     // A read-only instance of the SDK is sufficient because we connect the signer to it when needed
     initSafeSDK(web3ReadOnly, safe)
       .then(setSafeSDK)

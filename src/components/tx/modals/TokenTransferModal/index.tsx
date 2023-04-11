@@ -21,7 +21,7 @@ export const TokenTransferSteps: TxStepperProps['steps'] = [
     },
   },
   {
-    label: 'Review transaction',
+    label: 'Review transaction 5',
     render: (data, onSubmit) => (
       <ReviewTokenTx
         onSubmit={onSubmit}

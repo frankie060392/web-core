@@ -20,7 +20,6 @@ export const createOnboard = (chainConfigs: ChainInfo[], rpcConfig: EnvState['rp
   if (onboard) return onboard
 
   const wallets = getAllWallets()
-
   const chains = chainConfigs.map((cfg) => ({
     id: hexValue(parseInt(cfg.chainId)),
     label: cfg.chainName,
@@ -30,7 +29,6 @@ export const createOnboard = (chainConfigs: ChainInfo[], rpcConfig: EnvState['rp
     publicRpcUrl: cfg.publicRpcUri.value,
     blockExplorerUrl: new URL(cfg.blockExplorerUriTemplate.address).origin,
   }))
-
   onboard = Onboard({
     wallets,
 
@@ -48,6 +46,5 @@ export const createOnboard = (chainConfigs: ChainInfo[], rpcConfig: EnvState['rp
       recommendedInjectedWallets: getRecommendedInjectedWallets(),
     },
   })
-
   return onboard
 }

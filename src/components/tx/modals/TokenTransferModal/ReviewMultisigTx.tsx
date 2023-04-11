@@ -12,10 +12,14 @@ import { TokenTransferReview } from '@/components/tx/modals/TokenTransferModal/R
 import { createTx } from '@/services/tx/tx-sender'
 
 const ReviewMultisigTx = ({ params, onSubmit }: TokenTransferModalProps): ReactElement => {
+  console.log('🚀 ~ file: ReviewMultisigTx.tsx:15 ~ ReviewMultisigTx ~ params:', params)
   const { balances } = useBalances()
+  console.log('hhaaaa')
 
   const token = balances.items.find((item) => item.tokenInfo.address === params.tokenAddress)
   const { decimals, address } = token?.tokenInfo || {}
+  console.log('🚀 ~ file: ReviewMultisigTx.tsx:20 ~ ReviewMultisigTx ~ address:', address)
+  console.log('🚀 ~ file: ReviewMultisigTx.tsx:20 ~ ReviewMultisigTx ~ decimals:', decimals)
 
   // Create a safeTx
   const [safeTx, safeTxError] = useAsync<SafeTransaction>(() => {

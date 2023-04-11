@@ -24,12 +24,10 @@ const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubm
   const chain = useCurrentChain()
   const { safe } = useSafeInfo()
   const onboard = useOnboard()
-
   const [txsWithDetails, error, loading] = useAsync<TransactionDetails[]>(() => {
     if (!chain?.chainId) return
-
     return getTxsWithDetails(data.txs, chain.chainId)
-  }, [data.txs, chain?.chainId])
+  }, [])
 
   const multiSendContract = useMemo(() => {
     if (!chain?.chainId || !safe.version) return
@@ -67,6 +65,7 @@ const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubm
 
   return (
     <div>
+      <h2>12213123123</h2>
       <DialogContent>
         <Typography variant="body2" mb={2}>
           This transaction batches a total of {data.txs.length} transactions from your queue into a single Ethereum
@@ -99,7 +98,6 @@ const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubm
           Be aware that if any of the included transactions revert, none of them will be executed. This will result in
           the loss of the allocated transaction fees.
         </Typography>
-
         {error && (
           <ErrorMessage error={error}>
             This transaction will most likely fail. To save gas costs, avoid creating the transaction.

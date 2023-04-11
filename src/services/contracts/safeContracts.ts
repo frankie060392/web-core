@@ -138,6 +138,10 @@ export const getMultiSendCallOnlyContractInstance = (
 // GnosisSafeProxyFactory
 
 const getProxyFactoryContractDeployment = (chainId: string) => {
+  const result = getProxyFactoryDeployment({
+    version: LATEST_SAFE_VERSION,
+    network: chainId,
+  })
   return (
     getProxyFactoryDeployment({
       version: LATEST_SAFE_VERSION,
@@ -151,7 +155,6 @@ const getProxyFactoryContractDeployment = (chainId: string) => {
 
 export const getProxyFactoryContractInstance = (chainId: string, safeVersion: string = LATEST_SAFE_VERSION) => {
   const ethAdapter = createEthersAdapter()
-
   return ethAdapter.getSafeProxyFactoryContract({
     singletonDeployment: getProxyFactoryContractDeployment(chainId),
     ..._getValidatedGetContractProps(chainId, safeVersion),
@@ -161,6 +164,10 @@ export const getProxyFactoryContractInstance = (chainId: string, safeVersion: st
 // Fallback handler
 
 const getFallbackHandlerContractDeployment = (chainId: string) => {
+  const result = getFallbackHandlerDeployment({
+    version: LATEST_SAFE_VERSION,
+    network: chainId,
+  })
   return (
     getFallbackHandlerDeployment({
       version: LATEST_SAFE_VERSION,
@@ -177,7 +184,7 @@ export const getFallbackHandlerContractInstance = (
   safeVersion: string = LATEST_SAFE_VERSION,
 ): CompatibilityFallbackHandlerEthersContract => {
   const ethAdapter = createEthersAdapter()
-
+  const single = getFallbackHandlerContractDeployment(chainId)
   return ethAdapter.getCompatibilityFallbackHandlerContract({
     singletonDeployment: getFallbackHandlerContractDeployment(chainId),
     ..._getValidatedGetContractProps(chainId, safeVersion),
