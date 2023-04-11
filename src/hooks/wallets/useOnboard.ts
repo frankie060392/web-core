@@ -30,10 +30,14 @@ export const forgetLastWallet = () => {
 const { getStore, setStore, useStore } = new ExternalStore<OnboardAPI>()
 
 export const initOnboard = async (chainConfigs: ChainInfo[], rpcConfig: EnvState['rpc'] | undefined) => {
+  console.log('import tao lao')
   const { createOnboard } = await import('@/services/onboard')
+  console.log('init on board')
+  console.log(getStore())
   if (!getStore()) {
     setStore(createOnboard(chainConfigs, rpcConfig))
   }
+  console.log(getStore())
 }
 
 // Get the most recently connected wallet address

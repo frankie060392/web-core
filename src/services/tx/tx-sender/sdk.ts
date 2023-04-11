@@ -16,7 +16,10 @@ import type { ConnectedWallet } from '@/services/onboard'
 import type { JsonRpcSigner } from '@ethersproject/providers'
 
 export const getAndValidateSafeSDK = (): Safe => {
+  console.log('Init safe sdk')
+  console.log(getSafeSDK)
   const safeSDK = getSafeSDK()
+  console.log(safeSDK)
   if (!safeSDK) {
     throw new Error('The Safe SDK could not be initialized. Please be aware that we only support v1.0.0 Safes and up.')
   }

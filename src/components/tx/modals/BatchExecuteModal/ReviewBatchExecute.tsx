@@ -21,6 +21,7 @@ import useOnboard from '@/hooks/wallets/useOnboard'
 import { WrongChainWarning } from '@/components/tx/WrongChainWarning'
 
 const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubmit: (data: null) => void }) => {
+  console.log('review fucking')
   const [isSubmittable, setIsSubmittable] = useState<boolean>(true)
   const [submitError, setSubmitError] = useState<Error | undefined>()
   const chain = useCurrentChain()
@@ -30,12 +31,13 @@ const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubm
   // Chain has relaying feature and available relays
   const willRelay = !!remainingRelays
   const onboard = useOnboard()
-
+  console.log('review batch execute')
   const [txsWithDetails, error, loading] = useAsync<TransactionDetails[]>(() => {
+    console.log('use async')
     if (!chain?.chainId) return
-
+    console.log(data.txs, chain.chainId)
     return getTxsWithDetails(data.txs, chain.chainId)
-  }, [data.txs, chain?.chainId])
+  }, [])
 
   const multiSendContract = useMemo(() => {
     if (!chain?.chainId || !safe.version) return
@@ -87,6 +89,7 @@ const ReviewBatchExecute = ({ data, onSubmit }: { data: BatchExecuteData; onSubm
 
   return (
     <div>
+      <h2>12213123123</h2>
       <DialogContent>
         <Typography variant="body2" mb={2}>
           This transaction batches a total of {data.txs.length} transactions from your queue into a single Ethereum
@@ -132,7 +135,6 @@ executions from the same Safe."
           Be aware that if any of the included transactions revert, none of them will be executed. This will result in
           the loss of the allocated transaction fees.
         </Typography>
-
         {error && (
           <ErrorMessage error={error}>
             This transaction will most likely fail. To save gas costs, avoid creating the transaction.

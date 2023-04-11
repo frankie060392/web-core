@@ -34,6 +34,7 @@ export const createEthersAdapter = (provider = getWeb3()) => {
   }
 
   const signer = provider.getSigner(0)
+  console.log(signer, 'signer')
   return new EthersAdapter({
     ethers,
     signerOrProvider: signer,
@@ -45,46 +46,67 @@ const createReadOnlyEthersAdapter = (provider: JsonRpcProvider) => {
     throw new Error('Unable to create `EthersAdapter` without a provider')
   }
 
-  return new EthersAdapter({
+  const etherAdapter = new EthersAdapter({
     ethers,
     signerOrProvider: provider,
   })
+  return etherAdapter
 }
 
 // Safe Core SDK
 export const initSafeSDK = async (provider: JsonRpcProvider, safe: SafeInfo): Promise<Safe | undefined> => {
+  console.log('init safe sdk')
   const chainId = safe.chainId
   const safeAddress = safe.address.value
-  const safeVersion = safe.version ?? (await Gnosis_safe__factory.connect(safeAddress, provider).VERSION())
-
+  const safeVersion = '1.3.0' || (safe.version ?? (await Gnosis_safe__factory.connect(safeAddress, provider).VERSION()))
+  console.log(chainId)
+  console.log(safeAddress)
+  console.log(safeVersion)
   let isL1SafeMasterCopy = chainId === chains.eth
-
+  console.log(isL1SafeMasterCopy)
+  console.log(!isValidMasterCopy(safe))
   // If it is an official deployment we should still initiate the safeSDK
-  if (!isValidMasterCopy(safe)) {
-    const masterCopy = safe.implementation.value
+  // if (!isValidMasterCopy(safe)) {
+  const masterCopy = safe.implementation.value
+  console.log(masterCopy)
+  const safeL1Deployment = getSafeSingletonDeployment({ network: chainId, version: safeVersion })
+  console.log('🚀 ~ file: safeCoreSDK.ts:73 ~ initSafeSDK ~ safeL1Deployment:', safeL1Deployment)
+  const safeL2Deployment = getSafeL2SingletonDeployment({ network: chainId, version: safeVersion })
+  console.log('🚀 ~ file: safeCoreSDK.ts:75 ~ initSafeSDK ~ safeL2Deployment:', safeL2Deployment)
 
-    const safeL1Deployment = getSafeSingletonDeployment({ network: chainId, version: safeVersion })
-    const safeL2Deployment = getSafeL2SingletonDeployment({ network: chainId, version: safeVersion })
-
-    isL1SafeMasterCopy = masterCopy === safeL1Deployment?.defaultAddress
-    const isL2SafeMasterCopy = masterCopy === safeL2Deployment?.defaultAddress
-
-    // Unknown deployment, which we do not want to support
-    if (!isL1SafeMasterCopy && !isL2SafeMasterCopy) {
-      return Promise.resolve(undefined)
-    }
+  console.log({ network: chainId, version: safeVersion })
+  console.log(safeL2Deployment)
+  isL1SafeMasterCopy = masterCopy === safeL1Deployment?.defaultAddress
+  const isL2SafeMasterCopy = masterCopy === safeL2Deployment?.networkAddresses[chainId]
+  console.log(isL1SafeMasterCopy, isL2SafeMasterCopy)
+  // Unknown deployment, which we do not want to support
+  if (!isL1SafeMasterCopy && !isL2SafeMasterCopy) {
+    return Promise.resolve(undefined)
   }
+  // }
 
   // Legacy Safe contracts
   if (isLegacyVersion(safeVersion)) {
     isL1SafeMasterCopy = true
   }
-
-  return Safe.create({
+  console.log(provider)
+  console.log('create safe')
+  const adapter = createReadOnlyEthersAdapter(provider)
+  console.log(adapter, 'adapter')
+  const chainId1 = await adapter.getChainId()
+  console.log(chainId1)
+  const result = {
     ethAdapter: createReadOnlyEthersAdapter(provider),
     safeAddress,
     isL1SafeMasterCopy,
+  }
+  const test = Safe.create({
+    ethAdapter: adapter,
+    safeAddress,
+    isL1SafeMasterCopy,
   })
+  console.log('🚀 ~ file: safeCoreSDK.ts:105 ~ initSafeSDK ~ test:', test)
+  return test
 }
 
 export const {

@@ -58,7 +58,11 @@ const getRecommendedTxParams = async (
  * Create a transaction from raw params
  */
 export const createTx = async (txParams: SafeTransactionDataPartial, nonce?: number): Promise<SafeTransaction> => {
+  console.log('🚀 ~ file: create.ts:61 ~ createTx ~ nonce:', nonce)
+  console.log('🚀 ~ file: create.ts:61 ~ createTx ~ txParams:', txParams)
+
   const safeSDK = getAndValidateSafeSDK()
+  console.log('🚀 ~ file: create.ts:65 ~ createTx ~ safeSDK:', safeSDK)
 
   // If the nonce is not provided, we get the recommended one
   if (nonce === undefined) {

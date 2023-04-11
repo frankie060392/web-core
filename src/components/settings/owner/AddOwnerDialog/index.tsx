@@ -24,7 +24,7 @@ const AddOwnerSteps: TxStepperProps['steps'] = [
     render: (data, onSubmit) => <SetThresholdStep data={data as ChangeOwnerData} onSubmit={onSubmit} />,
   },
   {
-    label: 'Review transaction',
+    label: 'Review transaction 1',
     render: (data, onSubmit) => <ReviewOwnerTxStep data={data as ChangeOwnerData} onSubmit={onSubmit} />,
   },
 ]

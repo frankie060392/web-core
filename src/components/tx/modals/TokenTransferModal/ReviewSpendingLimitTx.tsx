@@ -34,6 +34,7 @@ export type SpendingLimitTxParams = {
 }
 
 const ReviewSpendingLimitTx = ({ params, onSubmit }: TokenTransferModalProps): ReactElement => {
+  console.log('review transaction tx')
   const [isSubmittable, setIsSubmittable] = useState<boolean>(true)
   const [submitError, setSubmitError] = useState<Error | undefined>()
   const currentChain = useCurrentChain()
