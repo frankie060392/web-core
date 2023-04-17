@@ -15,7 +15,7 @@ const Queue: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Transaction queue</title>
+        <title>U2U Multisign – Transaction queue</title>
       </Head>
 
       <BatchExecuteHoverProvider>

@@ -31,7 +31,7 @@ const ShareSafeApp = () => {
   return (
     <>
       <Head>
-        <title>Safe Apps – Share</title>
+        <title>U2U Multisign Apps – Share</title>
       </Head>
 
       <main>

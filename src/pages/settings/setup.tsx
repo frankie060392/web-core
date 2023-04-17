@@ -17,7 +17,7 @@ const Setup: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Settings – Setup</title>
+        <title>U2U Multisign – Settings – Setup</title>
       </Head>
 
       <SettingsHeader />
@@ -27,10 +27,10 @@ const Setup: NextPage = () => {
           <Grid container spacing={3}>
             <Grid item lg={4} xs={12}>
               <Typography variant="h4" fontWeight={700}>
-                Safe nonce
+                U2U Multisign nonce
                 <Tooltip
                   placement="top"
-                  title="For security reasons, transactions made with Safe need to be executed in order. The nonce shows you which transaction will be executed next. You can find the nonce for a transaction in the transaction details."
+                  title="For security reasons, transactions made with U2U Multisign need to be executed in order. The nonce shows you which transaction will be executed next. You can find the nonce for a transaction in the transaction details."
                 >
                   <span>
                     <SvgIcon

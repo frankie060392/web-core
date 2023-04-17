@@ -6,7 +6,7 @@ const PrivacyPolicy: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Privacy policy</title>
+        <title>U2U Multisign – Privacy policy</title>
       </Head>
 
       <main>

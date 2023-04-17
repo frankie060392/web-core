@@ -10,7 +10,7 @@ const Modules: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Settings – Modules</title>
+        <title>U2U Multisign – Settings – Modules</title>
       </Head>
 
       <SettingsHeader />

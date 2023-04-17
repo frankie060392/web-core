@@ -7,7 +7,7 @@ const Offline: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Offline</title>
+        <title>U2U Multisign – Offline</title>
       </Head>
 
       <main>

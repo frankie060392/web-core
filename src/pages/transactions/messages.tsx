@@ -11,7 +11,7 @@ const Messages: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Messages</title>
+        <title>U2U Multisign – Messages</title>
       </Head>
 
       <TxHeader

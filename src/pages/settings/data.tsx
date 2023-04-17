@@ -7,7 +7,7 @@ const Data: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Settings – Data</title>
+        <title>U2U Multisign – Settings – Data</title>
       </Head>
 
       <SettingsHeader />

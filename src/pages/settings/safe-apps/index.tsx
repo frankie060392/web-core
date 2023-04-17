@@ -8,7 +8,7 @@ const SafeAppsPermissionsPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Settings – Safe Apps permissions</title>
+        <title>U2U Multisign – Settings – U2U Multisign Apps permissions</title>
       </Head>
 
       <SettingsHeader />

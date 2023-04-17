@@ -7,7 +7,7 @@ const EnvironmentVariablesPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Settings – Environment variables</title>
+        <title>U2U Multisign – Settings – Environment variables</title>
       </Head>
 
       <SettingsHeader />

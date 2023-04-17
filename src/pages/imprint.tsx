@@ -6,7 +6,7 @@ const Imprint: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Imprint</title>
+        <title>U2U Multisign – Imprint</title>
       </Head>
 
       <main>

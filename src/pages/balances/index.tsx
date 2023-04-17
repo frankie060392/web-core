@@ -23,7 +23,7 @@ const Balances: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Safe – Assets</title>
+        <title>U2U Multisign – Assets</title>
       </Head>
 
       <AssetsHeader>

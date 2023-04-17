@@ -16,7 +16,7 @@ const BookmarkedSafeApps: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Bookmarked Safe Apps</title>
+        <title>Bookmarked U2U Multisign Apps</title>
       </Head>
 
       <SafeAppsSDKLink />

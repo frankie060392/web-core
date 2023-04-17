@@ -6,9 +6,6 @@ import css from './styles.module.css'
 import { useAppDispatch } from '@/store'
 import { openCookieBanner } from '@/store/popupSlice'
 import { AppRoutes } from '@/config/routes'
-import packageJson from '../../../../package.json'
-import AppstoreButton from '../AppStoreButton'
-import ExternalLink from '../ExternalLink'
 import MUILink from '@mui/material/Link'
 
 const footerPages = [
@@ -37,7 +34,7 @@ const Footer = (): ReactElement | null => {
     <footer className={css.container}>
       <ul>
         <li>
-          <Typography variant="caption">&copy;2022–{new Date().getFullYear()} Safe Ecosystem Foundation</Typography>
+          <Typography variant="caption">&copy;2022–{new Date().getFullYear()} U2U Ecosystem</Typography>
         </li>
         <li>
           <Link href={AppRoutes.terms} passHref>
@@ -49,11 +46,11 @@ const Footer = (): ReactElement | null => {
             <MUILink>Privacy</MUILink>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <ExternalLink noIcon href="https://safe.global/licenses">
             Licenses
           </ExternalLink>
-        </li>
+        </li> */}
         <li>
           <Link href={AppRoutes.imprint} passHref>
             <MUILink>Imprint</MUILink>
@@ -68,14 +65,14 @@ const Footer = (): ReactElement | null => {
             <MUILink onClick={onCookieClick}>Preferences</MUILink>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <ExternalLink noIcon href={`${packageJson.homepage}/releases/tag/v${packageJson.version}`}>
             v{packageJson.version}
           </ExternalLink>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <AppstoreButton placement="footer" />
-        </li>
+        </li> */}
       </ul>
     </footer>
   )
