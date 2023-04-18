@@ -24,7 +24,7 @@ export const navItems: NavItem[] = [
   {
     label: 'Assets',
     icon: <SvgIcon component={AssetsIcon} inheritViewBox />,
-    href: AppRoutes.balances.index,
+    href: AppRoutes.balances.balances,
   },
   {
     label: 'Transactions',
@@ -66,7 +66,7 @@ export const transactionNavItems = [
 export const balancesNavItems = [
   {
     label: 'Tokens',
-    href: AppRoutes.balances.index,
+    href: AppRoutes.balances.balances,
   },
   {
     label: 'NFTs',
